@@ -2,12 +2,9 @@
 from setuptools import setup
 
 setup(
-    name="kukufuckingkan",
+    name="moril",
     version="0.6",
-    packages=["audio"],
+    packages=["kukukan"],
     install_requires=[
-        # List your dependencies here
-        "requests",
-        "flask",
     ],
 )
