@@ -11,7 +11,7 @@ from IPython.core.display import HTML
 from IPython.display import HTML
 
 
-def player(filePath: str, env: str) -> str:
+def play(filePath: str, env: str) -> str:
     path = getPath(filePath, env)
 
     # HTML for the audio player without newlines
