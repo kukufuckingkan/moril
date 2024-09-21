@@ -49,8 +49,7 @@ def playFromGitt(folder: str,numero: int) -> str:
         path += FOLDER_PATH
     
     path += str(numero) + ".mp3"
-    print(path)
-
+  
     return showHtml(path)
 
 # if __name__=="__main__":

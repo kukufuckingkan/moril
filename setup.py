@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="moril",
-    version="0.9",
+    version="1",
     packages=["kukukan"],
     install_requires=[
     ],
