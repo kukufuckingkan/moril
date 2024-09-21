@@ -10,17 +10,23 @@ Created on Tue Sep 17 17:47:16 2024
 from IPython.core.display import HTML
 from IPython.display import HTML
 
+BASE_PATH = "https://github.com/kukufuckingkan/mandenkan_media/raw/refs/heads/main/"
+FOLDER_PATH = "consonant/"
+FOLDER_VOWEL = "vowel/"
+
+
+def showHtml(path: str) -> str:
+    return  '''<audio controls style="width:150px">
+                    <source src="{}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>'''.format(path)
 
 def play(filePath: str, env: str) -> str:
     path = getPath(filePath, env)
 
-    # HTML for the audio player without newlines
-    audio_html = '''<audio controls style="width:150px">
-                      <source src="{}" type="audio/mpeg">
-                      Your browser does not support the audio element.
-                    </audio>'''.format(path)
+    return showHtml(path)
     
-    return audio_html
+
 
 
 def getPath(path:str,env: str) -> str:
@@ -32,4 +38,22 @@ def getPath(path:str,env: str) -> str:
         return path
     return ''
 
+
+def playFromGitt(folder: str,numero: int) -> str:
+    path = BASE_PATH
+    
+    if folder == 'VOWEL':
+        path += FOLDER_VOWEL
+    
+    if folder == 'CONSONANT':
+        path += FOLDER_PATH
+    
+    path += str(numero) + ".mp3"
+    print(path)
+
+    return showHtml(path)
+
+# if __name__=="__main__":
+#     playFromGitt('VOWEL',2)
+    
     
