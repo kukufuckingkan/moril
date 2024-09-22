@@ -5,10 +5,8 @@ BASE_PATH = "https://github.com/kukufuckingkan/mandenkan_media/raw/refs/heads/ma
 EXTENSION = ".jpg"
 
 
-def showHtml(numero: int, name: str) -> str:
 
-    def getPathFromGit(numero: int) -> str:
-        return BASE_PATH + str(numero) + EXTENSION
+def player(numero: int, alt: str,folder: str) -> str:
+    path = BASE_PATH + folder + "/" + str(numero) + EXTENSION
     
-    path = getPathFromGit(numero)
-    return  '''<img src="{}" alt="{}" width="150" height="150">'''.format(path,name)
+    return  '''<img src="{}" alt="{}" width="150" height="150">'''.format(path,alt)
