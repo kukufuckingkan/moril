@@ -2,7 +2,7 @@ from IPython.core.display import HTML
 from IPython.display import HTML
 
 BASE_PATH = "https://github.com/kukufuckingkan/mandenkan_media/raw/refs/heads/main/image/"
-EXTENSION = ".jpeg"
+EXTENSION = ".jpg"
 
 
 def showHtml(numero: int, name: str) -> str:
