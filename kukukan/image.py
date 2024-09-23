@@ -7,6 +7,12 @@ EXTENSION = ".jpg"
 
 
 def player(numero: int, alt: str,folder: str) -> str:
-    path = BASE_PATH + folder + "/" + str(numero) + EXTENSION
-    
+    path = getPath(numero,folder)
     return  '''<img src="{}" alt="{}" width="150" height="150">'''.format(path,alt)
+
+def player(numero: int, alt: str,folder: str,width: int, height: int) -> str:
+    path = getPath(numero,folder)
+    return  '''<img src="{}" alt="{}" width="{}" height="{}">'''.format(path,alt,width,height)
+
+def getPath(numero: int,folder: str) -> str:
+    return BASE_PATH + folder + "/" + str(numero) + EXTENSION
