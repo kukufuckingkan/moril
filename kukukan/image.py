@@ -10,7 +10,7 @@ def player(numero: int, alt: str,folder: str) -> str:
     path = getPath(numero,folder)
     return  '''<img src="{}" alt="{}" width="150" height="150">'''.format(path,alt)
 
-def player(numero: int, alt: str,folder: str,width: int, height: int) -> str:
+def playerWithDimention(numero: int, alt: str,folder: str,width: int, height: int) -> str:
     path = getPath(numero,folder)
     return  '''<img src="{}" alt="{}" width="{}" height="{}">'''.format(path,alt,width,height)
 
