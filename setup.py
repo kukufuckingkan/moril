@@ -8,7 +8,7 @@ setup(
     description='manden packages',
     author='Ana Keita',
     author_email='keita.kukukhan@gmail.com',    
-    packages=['kukukan','conda','memory','query','alia'],
+    packages=['kukukan','conda','memory','query','ali'],
     install_requires=[
         'pandas',
         'sqlalchemy',
