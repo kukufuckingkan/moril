@@ -1,15 +1,16 @@
 """
 @author Ana
 """
-import urllib.request
-import pandas as pd
+
 import logging as log
 import pathlib
+import urllib
 #pathlib.Path or py._path.local.LocalPath
 from typing import Dict,Optional,overload
-import urllib
-from PIL import Image, ImageFile
-import io
+
+from ana import http
+
+
 
 class Git:
     
@@ -17,7 +18,7 @@ class Git:
         basePath = 'https://github.com/kukufuckingkan/mandenkanMedia/raw/refs/heads/main/'
         self.folder = folder
         self.subfolder = subFolder
-        self.path += folder + '/' + subFolder
+        self.path += basePath + folder + '/' + subFolder
  
 
     # retrive all assets in the subfolder
@@ -33,7 +34,7 @@ class Git:
             match self.subfolder:
                 case 'english':
                     url += assetName + '.' + extension
-                    data = self.response(url=url)
+                    data = http.request(url=url)
                     return data              
                 case 'ߣߞߏ':
                     return None
@@ -46,18 +47,8 @@ class Git:
                 case 'animal':
                     if assetName and extension:
                         url += assetName + '.' + extension
-                        data = self.response(url=url)
+                        data = http.request(url=url)
                         return data
                     
 
-    
-    def response(self,url) -> bytes:
-        try:
-            with urllib.request.urlopen(url) as response:
-                # Read the response data
-                data = response.read()
-                return io.BytesIO(data)
 
-        except urllib.error.URLError as e:
-            print(f"Failed to fetch data: {e.reason}")        
-                
