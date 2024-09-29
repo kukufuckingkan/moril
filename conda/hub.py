@@ -12,7 +12,7 @@ from ana import http
 
 
 
-class Hub:
+class Git:
     
     def __init__(self,folder: str, subFolder: str) -> None:
         basePath = 'https://github.com/kukufuckingkan/mandenkanMedia/raw/refs/heads/main/'
