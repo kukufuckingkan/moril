@@ -4,7 +4,6 @@
 
 from sqlalchemy import create_engine, Engine , Connection
 from pandas import DataFrame,ExcelFile
-from typing import Dict
 import logging as log
 
 class Sqlite:
@@ -17,24 +16,24 @@ class Sqlite:
         return self.__connection
     
         
-    def initAll(self,book: ExcelFile, sheet: str)-> int | None:
+    def initAll(self,book: ExcelFile, sheet: str)-> int:
         df = book.parse(sheet_name= sheet)
         db = self.populate(tableName= sheet,dataframe=df)
         return db        
  
                     
-    def initFromFrame(self, frame : DataFrame , table: str)-> int | None:
+    def initFromFrame(self, frame : DataFrame , table: str)-> int:
         db = self.populate(tableName= table,dataframe= frame)
         return db
     
-    def initFromExcel(self, file : ExcelFile , table: str)-> int | None:
+    def initFromExcel(self, file : ExcelFile , table: str)-> int:
         
         return 
         
 
                     
 
-    def populate(self,dataframe: DataFrame,tableName: str) -> (int | None):
+    def populate(self,dataframe: DataFrame,tableName: str) -> int:
         # todo add indexes
         rowCount = dataframe.to_sql(name=tableName,con=self.__connection, if_exists= 'replace')
         log.info(f'number of affecred rows: {rowCount}')        
