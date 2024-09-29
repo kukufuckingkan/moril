@@ -12,7 +12,7 @@ from ana import http
 
 
 
-class Git:
+class Hub:
     
     def __init__(self,folder: str, subFolder: str) -> None:
         basePath = 'https://github.com/kukufuckingkan/mandenkanMedia/raw/refs/heads/main/'
@@ -25,7 +25,7 @@ class Git:
     def retriveDirFiles(self):
         pass
     
-    def retriveFile(self,asset:None| str, extension) -> bytes:
+    def retriveFile(self,asset:str, extension:str) -> bytes:
         url = self.path + asset + '.' + extension
         data = http.request(url=url)
         return data

@@ -7,7 +7,7 @@ from pandas import DataFrame,ExcelFile
 from typing import Dict
 import logging as log
 
-class Database:
+class Sqlite:
     def __init__(self,folder: str, subfolder:str) -> None:
         url = 'sqlite:///{folder}_{subfolder}_ana.db'.format(folder= folder,subfolder= subfolder)
         database = create_engine(url)
