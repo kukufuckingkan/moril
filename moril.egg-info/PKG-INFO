@@ -1,0 +1,10 @@
+Metadata-Version: 2.1
+Name: moril
+Version: 1.0.8
+Summary: manden packages
+Author: Ana Keita
+Author-email: keita.kukukhan@gmail.com
+Requires-Python: >=3.6
+Requires-Dist: pandas
+Requires-Dist: sqlalchemy
+Requires-Dist: Pillow

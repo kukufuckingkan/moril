@@ -7,11 +7,12 @@ setup(
     description='manden packages',
     author='Ana Keita',
     author_email='keita.kukukhan@gmail.com',    
-    packages=['kukukan','conda','memory','query','ali','ana'],
+    packages=['kukukan','conda','memory','aminatu','ali','ana'],
     install_requires=[
         'pandas',
         'sqlalchemy',
-        'Pillow'
+        'Pillow',
+        'openpyxl'
     ],
     python_requires='>=3.6'
 )
