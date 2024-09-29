@@ -18,26 +18,10 @@ class Sqlite:
     
         
     def initAll(self,book: ExcelFile, sheet: str)-> int | None:
-        sheetNames = book.sheet_names
-        
-        log.info(f'Sheet names: {sheetNames}')
-        for sheetName in book.sheet_names:
-            capSheetName = sheetName.upper()
-            if 'english'.__eq__(sheet.casefold()):
-                match capSheetName:
-                    case 'WORD':
-                        df = book.parse(sheet_name= sheetName)
-                        db = self.populate(tableName= sheetName,dataframe=df)
-                        return db
-                    case _:
-                        return
-            elif 'ߒߞߏ'.__eq__(sheet.casefold()):
-                match capSheetName:
-                    case 'WORD':
-                        df = book.parse(sheet_name= sheetName)
-                        return self.populate(tableName= sheetName,dataframe=df)
-                    case _:
-                        return  
+        df = book.parse(sheet_name= sheet)
+        db = self.populate(tableName= sheet,dataframe=df)
+        return db        
+ 
                     
     def initFromFrame(self, frame : DataFrame , table: str)-> int | None:
         db = self.populate(tableName= table,dataframe= frame)
