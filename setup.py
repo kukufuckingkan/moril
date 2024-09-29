@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="moril",
-    version="2.0.0",
+    version="2.0.1",
     description='manden packages',
     author='Ana Keita',
     author_email='keita.kukukhan@gmail.com',    
@@ -14,5 +14,5 @@ setup(
         'Pillow',
         'openpyxl'
     ],
-    python_requires='>=3.12'
+    python_requires='>=3.9.6'
 )
