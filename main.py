@@ -12,10 +12,6 @@ from ali import excel
 from aminatu.query import Query
 
 
-
-
-
- 
 if __name__ == "__main__":
     folder,subFolder, asset = 'dictionary','english','dictionary'
     sheetName = 'word'

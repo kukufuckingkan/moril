@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name="moril",
-    version="1.0.8",
+    version="1.0.9",
     description='manden packages',
     author='Ana Keita',
     author_email='keita.kukukhan@gmail.com',    
