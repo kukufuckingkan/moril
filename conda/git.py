@@ -27,24 +27,8 @@ class Git:
     
     def retriveFile(self,asset:None| str, extension) -> bytes:
         url = self.path + asset + '.' + extension
-
-        if self.folder == 'dictionary':
-            match self.subfolder:
-                case 'english':
-                    data = http.request(url=url)
-                    return data              
-                case 'ߣߞߏ':
-                    return None
-                case _:
-                    return None
-                
-        # subfolder is image
-        else:
-            match self.subfolder:
-                case 'animal':
-                    if asset and extension:
-                        data = http.request(url=url)
-                        return data
+        data = http.request(url=url)
+        return data
                     
 
 

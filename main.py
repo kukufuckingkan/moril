@@ -13,26 +13,23 @@ from aminatu.query import Query
 
 
 if __name__ == "__main__":
-    folder,subFolder, asset = 'dictionary','english','dictionary'
-    sheetName = 'word'
-    git = Git(folder=folder,subFolder=subFolder)
-    fileData  = git.retriveFile(asset=asset,extension='xlsx')
+    # folder,subFolder, asset = 'dictionary','english','dictionary'
+    # sheetName = 'word'
+    # git = Git(folder=folder,subFolder=subFolder)
+    # fileData  = git.retriveFile(asset=asset,extension='xlsx')
 
-    excelFile = excel.getFile(data=fileData)
-    dataframe = excel.getSheet(name= sheetName,book=excelFile)
-    #print(dataframe)
+    # excelFile = excel.getFile(data=fileData)
+    # dataframe = excel.getSheet(name= sheetName,book=excelFile)
+    # #print(dataframe)
 
-    database = Database(folder=folder,subfolder=subFolder)
-    database.initFromFrame(table= sheetName, frame= dataframe)
-    connection = database.connection()
+    # database = Database(folder=folder,subfolder=subFolder)
+    # database.initFromFrame(table= sheetName, frame= dataframe)
+    # connection = database.connection()
 
-    query = Query(connection= connection,table=sheetName)
-    findAll = query.findAll()
-    print(findAll)
+    # query = Query(connection= connection,table=sheetName)
+    # findAll = query.findAll()
+    # print(findAll)
     
-
-    
-    
-    # engine = database.create()
+    pass
 
  
