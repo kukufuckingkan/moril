@@ -2,9 +2,9 @@ import pandas as pd
 from pandas import DataFrame
 
 from pandas import ExcelFile
-import io
+from io import BytesIO
 
-def getFile(data: bytes) -> ExcelFile:
+def getFile(data: BytesIO) -> ExcelFile:
     try:
         file = pd.ExcelFile(data)
         return file
