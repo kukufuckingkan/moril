@@ -5,6 +5,7 @@
 from sqlalchemy import create_engine, Engine , Connection
 from pandas import DataFrame,ExcelFile
 import logging as log
+from typing import Dict
 
 class Sqlite:
     def __init__(self,folder: str, subfolder:str) -> None:
@@ -33,9 +34,9 @@ class Sqlite:
 
                     
 
-    def populate(self,dataframe: DataFrame,tableName: str) -> int:
+    def populate(self,dataframe: DataFrame,tableName: str, dataType: Dict, indexLable: str) -> int:
         # todo add indexes
-        rowCount = dataframe.to_sql(name=tableName,con=self.__connection, if_exists= 'replace')
+        rowCount = dataframe.to_sql(name=tableName,con=self.__connection, if_exists= 'append',dtype=dataType,index_label=indexLable)
         log.info(f'number of affecred rows: {rowCount}')        
         
         return rowCount,tableName                    
