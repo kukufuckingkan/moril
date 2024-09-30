@@ -24,13 +24,9 @@ class Sqlite:
  
                     
     def initFromFrame(self, frame : DataFrame , table: str,dataType: Dict, indexLable: str)-> int:
-        db = self.populate(tableName= table,dataframe= frame)
-         # todo add indexes
+        
         rowCount = frame.to_sql(name=table,con=self.__connection, if_exists= 'append',dtype=dataType,index_label=indexLable)
         log.info(f'number of affecred rows: {rowCount}')          
-        return db
-    
-    def initFromExcel(self, file : ExcelFile , table: str)-> int:
-        
-        return 
+        return rowCount
+
         
