@@ -15,7 +15,7 @@ class Sqlite:
         self.__database = database
 
 
-    def createTable(sheetName: str, database: Engine):
+    def createTable(self,sheetName: str):
         metadata = MetaData()
         if 'word'.__eq__(sheetName):
             Table(
@@ -30,8 +30,8 @@ class Sqlite:
                 Index('ix_users_text', 'text'),
                 Index('ix_users_root', 'root')                                                
             )
-            
-            metadata.create_all(database)
+
+            metadata.create_all(self.__database)
 
         elif 'image'.__eq__(sheetName):
             Table(
@@ -42,7 +42,7 @@ class Sqlite:
                 Index('ix_image_name_id', 'name_id'),                                              
             )
 
-            metadata.create_all(database)   
+            metadata.create_all(self.__database)   
         else:
             pass               
 
