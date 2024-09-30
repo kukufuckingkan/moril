@@ -5,7 +5,6 @@
 import logging as log
 import pathlib
 import urllib
-#pathlib.Path or py._path.local.LocalPath
 from typing import Dict,Optional
 from io import BytesIO
 from ana import http
@@ -15,10 +14,12 @@ from ana import http
 class Git:
     
     def __init__(self,folder: str, subFolder: str) -> None:
-        basePath = 'https://github.com/kukufuckingkan/mandenkanMedia/raw/refs/heads/main/'
-        self.folder = folder
-        self.subfolder = subFolder
-        self.path = basePath + folder + '/' + subFolder + '/'
+        self.path = 'https://github.com/kukufuckingkan/mandenkanMedia/raw/refs/heads/main/'
+    
+        if folder:
+            self.path += folder + '/'
+        if subFolder:
+            self.path += + subFolder + '/'    
  
 
     # retrive all assets in the subfolder
