@@ -1,7 +1,6 @@
 from PIL import Image
-import io
+from io import BytesIO
 
-def display(data:bytes) -> None:
-    io_Img = io.BytesIO(data)
-    image = Image.open(io_Img)
+def display(data:BytesIO) -> None:
+    image = Image.open(data)
     image.show()

@@ -7,7 +7,7 @@ import pathlib
 import urllib
 #pathlib.Path or py._path.local.LocalPath
 from typing import Dict,Optional
-
+from io import BytesIO
 from ana import http
 
 
@@ -25,7 +25,7 @@ class Git:
     def retriveDirFiles(self):
         pass
     
-    def retriveFile(self,asset:str, extension:str) -> bytes:
+    def retriveFile(self,asset:str, extension:str) -> BytesIO:
         url = self.path + asset + '.' + extension
         data = http.request(url=url)
         return data
