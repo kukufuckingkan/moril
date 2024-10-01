@@ -7,7 +7,7 @@ class Query:
         self.table = table
         self.connection = connection
 
-    def insertImage(self,data: BytesIO,str,id: int,name: int):
+    def insertImage(self,data: BytesIO,id: int,name: int):
         query = insert(table=self.table).values(id=id, name=name,data=data)
         self.connection.execute(query)
 

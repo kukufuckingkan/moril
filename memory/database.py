@@ -48,7 +48,7 @@ class Sqlite:
                 Column('name', Integer),
 
                 Index('ix_image_id', 'id'),
-                Index('ix_image_name_id', 'name_id'),                                              
+                Index('ix_image_name_id', 'name'),                                              
             )
 
             metadata.create_all(self.database)   
