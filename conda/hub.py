@@ -19,7 +19,7 @@ class Git:
         if folder:
             self.path += folder + '/'
         if subFolder:
-            self.path += + subFolder + '/'    
+            self.path += subFolder + '/'    
  
 
     # retrive all assets in the subfolder

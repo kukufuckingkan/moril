@@ -58,6 +58,6 @@ class Sqlite:
                     
     def initFromFrame(self, frame : DataFrame , table: str)-> int:
         connection = self.__database.connect()
-        rowCount = frame.to_sql(name=table,con= connection, if_exists= 'append')
+        rowCount = frame.to_sql(name=table,con= connection, if_exists= 'append',index=False)
         log.info(f'number of affecred rows: {rowCount}')          
         return rowCount
