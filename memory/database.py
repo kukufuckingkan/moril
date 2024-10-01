@@ -11,7 +11,6 @@ class Sqlite:
         url = 'sqlite:///{folder}_{subfolder}_ana.db'.format(folder= folder,subfolder= subfolder)
         database = create_engine(url)
         metadata = MetaData()
-        metadata.create_all(database)
         self.__database = database
 
 
