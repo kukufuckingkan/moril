@@ -20,7 +20,7 @@ class Sqlite:
         if 'word'.__eq__(sheetName):
             Table(
                 sheetName, metadata,
-                Column('sku', Integer, primary_key=True),
+                Column('index', Integer, primary_key=True),
                 Column('id', Integer),  
                 Column('text', String),
                 Column('meaning', Text),
