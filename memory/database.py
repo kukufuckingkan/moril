@@ -43,10 +43,11 @@ class Sqlite:
             Table(
                 sheetName, metadata,
                  Column('index', Integer, primary_key=True),               
-                Column('id', Integer, primary_key=True),
+                Column('id', Integer),
                 Column('data', BINARY),
                 Column('name', Integer),
 
+                Index('ix_image_id', 'id'),
                 Index('ix_image_name_id', 'name_id'),                                              
             )
 
