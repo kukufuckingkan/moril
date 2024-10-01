@@ -20,7 +20,8 @@ class Sqlite:
         if 'word'.__eq__(sheetName):
             Table(
                 sheetName, metadata,
-                Column('id', Integer, primary_key=True),  
+                Column('index', Integer, primary_key=True),
+                Column('id', Integer),  
                 Column('text', String),
                 Column('meaning', Text),
                 Column('voice', BINARY),
@@ -28,6 +29,7 @@ class Sqlite:
                 Column('type', Integer),
                 Column('version', Integer),
 
+                Index('ix_users_id', 'id'),
                 Index('ix_users_text', 'text'),
                 Index('ix_users_root', 'root')                                                
             )
@@ -37,10 +39,11 @@ class Sqlite:
         elif 'image'.__eq__(sheetName):
             Table(
                 sheetName, metadata,
+                 Column('index', Integer, primary_key=True),               
                 Column('id', Integer, primary_key=True),
                 Column('data', BINARY),
                 Column('name_id', Integer),
-                
+
                 Index('ix_image_name_id', 'name_id'),                                              
             )
 
