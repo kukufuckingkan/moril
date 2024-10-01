@@ -8,9 +8,13 @@ import logging as log
 
 class Sqlite:
     def __init__(self,folder: str, subfolder:str) -> None:
-        url = 'sqlite:///{folder}_{subfolder}_ana.db'.format(folder= folder,subfolder= subfolder)
+        url = 'sqlite:///ayinatu'
+        if folder:
+            url += '_'+ folder
+        if subfolder:
+            url += '_' + subfolder 
+        url += '.db'       
         database = create_engine(url)
-        metadata = MetaData()
         self.__database = database
 
 
