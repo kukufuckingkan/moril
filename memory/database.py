@@ -15,7 +15,7 @@ class Sqlite:
             url += '_' + subfolder 
         url += '.db'       
         database = create_engine(url)
-        self.__database = database
+        self.database = database
 
 
     def createTable(self,sheetName: str):
@@ -37,7 +37,7 @@ class Sqlite:
                 Index('ix_users_root', 'root')                                                
             )
 
-            metadata.create_all(self.__database)
+            metadata.create_all(self.database)
 
         elif 'animal'.__eq__(sheetName):
             Table(
@@ -50,13 +50,13 @@ class Sqlite:
                 Index('ix_image_name_id', 'name_id'),                                              
             )
 
-            metadata.create_all(self.__database)   
+            metadata.create_all(self.database)   
         else:
             pass               
 
             
     def initFromExcell(self,book: ExcelFile, sheet: str)-> int:
-        connection = self.__database.connect()
+        connection = self.database.connect()
         df = book.parse(sheet_name= sheet)
         rowCount = df.to_sql(name=sheet,con= connection, if_exists= 'append') 
 
@@ -65,7 +65,7 @@ class Sqlite:
  
                     
     def initFromFrame(self, frame : DataFrame , table: str)-> int:
-        connection = self.__database.connect()
+        connection = self.database.connect()
         rowCount = frame.to_sql(name=table,con= connection, if_exists= 'append',index=False)
         log.info(f'number of affecred rows: {rowCount}')          
         return rowCount
