@@ -39,13 +39,13 @@ class Sqlite:
 
             metadata.create_all(self.__database)
 
-        elif 'image'.__eq__(sheetName):
+        elif 'animal'.__eq__(sheetName):
             Table(
                 sheetName, metadata,
                  Column('index', Integer, primary_key=True),               
                 Column('id', Integer, primary_key=True),
                 Column('data', BINARY),
-                Column('name_id', Integer),
+                Column('name', Integer),
 
                 Index('ix_image_name_id', 'name_id'),                                              
             )
