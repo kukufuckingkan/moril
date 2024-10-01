@@ -27,6 +27,7 @@ class Sqlite:
                 Column('root', Integer),
                 Column('type', Integer),
                 Column('version', Integer),
+
                 Index('ix_users_text', 'text'),
                 Index('ix_users_root', 'root')                                                
             )
@@ -39,6 +40,7 @@ class Sqlite:
                 Column('id', Integer, primary_key=True),
                 Column('data', BINARY),
                 Column('name_id', Integer),
+                
                 Index('ix_image_name_id', 'name_id'),                                              
             )
 
@@ -58,6 +60,6 @@ class Sqlite:
                     
     def initFromFrame(self, frame : DataFrame , table: str)-> int:
         connection = self.__database.connect()
-        rowCount = frame.to_sql(name=table,con= connection, if_exists= 'append',index=False)
+        rowCount = frame.to_sql(name=table,con= connection, if_exists= 'append',index=True)
         log.info(f'number of affecred rows: {rowCount}')          
         return rowCount
