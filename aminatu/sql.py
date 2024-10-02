@@ -1,19 +1,21 @@
-from sqlalchemy import create_engine, CursorResult,Connection,Engine,text,Sequence,Row,Column,Index,String,BINARY,Select,select,insert
+from sqlalchemy import create_engine, CursorResult,Connection,Engine,text,Sequence,Row,Column,Index,String,BINARY,Select,select,insert,Table
 from io import BytesIO
 class Query:
 
-    def __init__(self,connection: Connection, table: str) -> None:
+    def __init__(self,connection: Connection, table: Table ) -> None:
         # TODO check if connection is already established
         self.table = table
         self.connection = connection
 
-    def insertImage(self,data: BytesIO,id: int,name: int):
-        query = insert(table=self.table).values(id=id, name=name,data=data)
+    def insertImage(self,data: bytes,id: int,name: int):
+        query = self.table.insert().values(id=id, name=name,data=data)
         self.connection.execute(query)
+        self.connection.commit()
+
+        
 
     def findAll(self):
-        query = select('*').select_from(text(self.table))
-        #query = select(text(self.table))
+        query = self.table.select()
         result = self.connection.execute(query).fetchall()
         return result   
 

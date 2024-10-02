@@ -6,23 +6,19 @@ from sqlalchemy import create_engine, Engine ,Table, Column, Integer, String, Me
 from pandas import DataFrame,ExcelFile
 import logging as log
 
+
 class Sqlite:
-    def __init__(self,folder: str, subfolder:str) -> None:
-        url = 'sqlite:///ayinatu'
-        if folder:
-            url += '_'+ folder
-        if subfolder:
-            url += '_' + subfolder 
-        url += '.db'       
+    def __init__(self,database_name: str) -> None:
+        url = 'sqlite:///{}'.format(database_name)   
         database = create_engine(url)
         self.database = database
 
 
-    def createTable(self,sheetName: str):
+    def getTable(self,name: str) -> Table:
         metadata = MetaData()
-        if 'word'.__eq__(sheetName):
-            Table(
-                sheetName, metadata,
+        if 'word'.__eq__(name):
+            table = Table(
+                name, metadata,
                 Column('index', Integer, primary_key=True),
                 Column('id', Integer),  
                 Column('text', String),
@@ -36,12 +32,10 @@ class Sqlite:
                 Index('ix_users_text', 'text'),
                 Index('ix_users_root', 'root')                                                
             )
-
-            metadata.create_all(self.database)
-
-        elif 'animal'.__eq__(sheetName):
-            Table(
-                sheetName, metadata,
+            return table
+        elif 'animal'.__eq__(name):
+            table = Table(
+                name, metadata,
                  Column('index', Integer, primary_key=True),               
                 Column('id', Integer),
                 Column('data', BINARY),
@@ -50,12 +44,15 @@ class Sqlite:
                 Index('ix_image_id', 'id'),
                 Index('ix_image_name_id', 'name'),                                              
             )
+            return table
+        
 
-            metadata.create_all(self.database)   
-        else:
-            pass               
 
-            
+
+    def createTable(self,name: str):
+        table = self.getTable(name)
+        table.metadata.create_all(self.database)
+                         
     def initFromExcell(self,book: ExcelFile, sheet: str)-> int:
         connection = self.database.connect()
         df = book.parse(sheet_name= sheet)
